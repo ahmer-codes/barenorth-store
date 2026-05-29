@@ -1,0 +1,920 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <title>Order Page</title>
+    <style>
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  </head>
+  <body>
+    <ul
+      class="flex items-center justify-around max-[290px]:justify-between mr-4 font-semibold max-[800px]:text-xs"
+    >
+      <li>
+        <h1 class="w-24">
+          <img src="Imgs/1770734094459.png" alt="BareNorth Logo" class="w-24" />
+        </h1>
+      </li>
+      <li
+        class="text-gray-600 hover:text-black hover:underline max-[450px]:hidden"
+      >
+        <a href="home.html" id="homeDashboard">Home</a>
+      </li>
+      <li class="text-black font-bold max-[450px]:hidden">
+        <a href="orderpage.html">Order Page</a>
+      </li>
+      <li
+        class="text-gray-600 hover:text-black hover:underline max-[650px]:hidden"
+      >
+        <a href="transaction.html">Transaction Page</a>
+      </li>
+      <li
+        class="text-gray-600 hover:text-black hover:underline max-[650px]:hidden"
+      >
+        <a href="logs.html">Login Details</a>
+      </li>
+      <li
+        class="text-gray-600 hover:text-black hover:underline max-[650px]:hidden"
+      >
+        <a href="profilepage.html" id="profileORuser">Profile Page</a>
+      </li>
+      <li class="min-[650px]:hidden max-[450px]:hidden">
+        <a href="profilepage.html">Your Account</a>
+      </li>
+      <li title="logout">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          onclick="logout()"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-logout cursor-pointer"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path
+            d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"
+          />
+          <path d="M9 12h12l-3 -3" />
+          <path d="M18 15l3 -3" />
+        </svg>
+      </li>
+    </ul>
+
+    <nav
+      class="flex flex-col items-center justify-center w-full min-[450px]:hidden"
+    >
+      <ul
+        class="flex flex-col items-center w-full justify-center gap-2 border-gray-400 bg-gray-200 text-gray-700"
+      >
+        <li class="p-2 cursor-pointer font-semibold hover:text-black">
+          <a href="home.html">Home</a>
+        </li>
+        <li class="p-2 cursor-pointer font-semibold hover:text-black">
+          Order Page
+        </li>
+        <li class="p-2 cursor-pointer font-semibold hover:text-black">
+          Transaction Page
+        </li>
+        <li class="p-2 cursor-pointer font-semibold hover:text-black">
+          Login Detail
+        </li>
+        <li class="p-2 cursor-pointer font-semibold hover:text-black">
+          Profile Page
+        </li>
+      </ul>
+    </nav>
+
+    <section
+      class="flex max-[1000px]:flex-col items-center max-[1000px]:gap-1 max-[1000px]:justify-center max-[1000px]:items-center max-[1000px]:text-xs justify-between mx-24 mb-4 max-[730px]:mx-2"
+    >
+      <p class="text-4xl font-semibold" id="allORpage">Order Page</p>
+      <div class="flex justify-center">
+        <div class="relative w-96 max-[1000px]:w-32">
+          <input
+            id="searchData"
+            type="text"
+            placeholder="Search..."
+            class="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="absolute right-3 top-2.5 h-5 w-5 text-gray-500 max-[800px]:hidden"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-4.35-4.35m1.85-5.15a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        class="flex max-[450px]:flex-wrap gap-6 max-[555px]:gap-1 bg-gray-200 p-2 rounded-lg px-6 py-4"
+      >
+        <div class="flex items-center gap-1.5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 p-1 rounded-full cursor-pointer"
+            viewBox="0 0 640 640"
+            id="showiconID"
+            onclick="hideID()"
+          >
+            <path
+              d="M320 96C239.2 96 174.5 132.8 127.4 176.6C80.6 220.1 49.3 272 34.4 307.7C31.1 315.6 31.1 324.4 34.4 332.3C49.3 368 80.6 420 127.4 463.4C174.5 507.1 239.2 544 320 544C400.8 544 465.5 507.2 512.6 463.4C559.4 419.9 590.7 368 605.6 332.3C608.9 324.4 608.9 315.6 605.6 307.7C590.7 272 559.4 220 512.6 176.6C465.5 132.9 400.8 96 320 96zM176 320C176 240.5 240.5 176 320 176C399.5 176 464 240.5 464 320C464 399.5 399.5 464 320 464C240.5 464 176 399.5 176 320zM320 256C320 291.3 291.3 320 256 320C244.5 320 233.7 317 224.3 311.6C223.3 322.5 224.2 333.7 227.2 344.8C240.9 396 293.6 426.4 344.8 412.7C396 399 426.4 346.3 412.7 295.1C400.5 249.4 357.2 220.3 311.6 224.3C316.9 233.6 320 244.4 320 256z"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 hidden p-1 rounded-full cursor-pointer"
+            onclick="showID()"
+            id="hideiconID"
+            viewBox="0 0 640 512"
+          >
+            <path
+              d="M320 400c-75.85 0-137.25-58.71-142.9-133.11L72.2 185.82c-13.79 17.3-26.48 35.59-36.72 55.59a32.35 32.35 0 0 0 0 29.19C89.71 376.41 197.07 448 320 448c26.91 0 52.87-4 77.89-10.46L346 397.39a144.13 144.13 0 0 1-26 2.61zm313.82 58.1l-110.55-85.44a331.25 331.25 0 0 0 81.25-102.07 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64a308.15 308.15 0 0 0-147.32 37.7L45.46 3.37A16 16 0 0 0 23 6.18L3.37 31.45A16 16 0 0 0 6.18 53.9l588.36 454.73a16 16 0 0 0 22.46-2.81l19.64-25.27a16 16 0 0 0-2.82-22.45zm-183.72-142l-39.3-30.38A94.75 94.75 0 0 0 416 256a94.76 94.76 0 0 0-121.31-92.21A47.65 47.65 0 0 1 304 192a46.64 46.64 0 0 1-1.54 10l-73.61-56.89A142.31 142.31 0 0 1 320 112a143.92 143.92 0 0 1 144 144c0 21.63-5.29 41.79-13.9 60.11z"
+            />
+          </svg>
+          <p>ID</p>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 p-1 rounded-full cursor-pointer"
+            viewBox="0 0 640 640"
+            id="showiconQuant"
+            onclick="hideQuant()"
+          >
+            <path
+              d="M320 96C239.2 96 174.5 132.8 127.4 176.6C80.6 220.1 49.3 272 34.4 307.7C31.1 315.6 31.1 324.4 34.4 332.3C49.3 368 80.6 420 127.4 463.4C174.5 507.1 239.2 544 320 544C400.8 544 465.5 507.2 512.6 463.4C559.4 419.9 590.7 368 605.6 332.3C608.9 324.4 608.9 315.6 605.6 307.7C590.7 272 559.4 220 512.6 176.6C465.5 132.9 400.8 96 320 96zM176 320C176 240.5 240.5 176 320 176C399.5 176 464 240.5 464 320C464 399.5 399.5 464 320 464C240.5 464 176 399.5 176 320zM320 256C320 291.3 291.3 320 256 320C244.5 320 233.7 317 224.3 311.6C223.3 322.5 224.2 333.7 227.2 344.8C240.9 396 293.6 426.4 344.8 412.7C396 399 426.4 346.3 412.7 295.1C400.5 249.4 357.2 220.3 311.6 224.3C316.9 233.6 320 244.4 320 256z"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 hidden p-1 rounded-full cursor-pointer"
+            onclick="showQuant()"
+            id="hideiconQuant"
+            viewBox="0 0 640 512"
+          >
+            <path
+              d="M320 400c-75.85 0-137.25-58.71-142.9-133.11L72.2 185.82c-13.79 17.3-26.48 35.59-36.72 55.59a32.35 32.35 0 0 0 0 29.19C89.71 376.41 197.07 448 320 448c26.91 0 52.87-4 77.89-10.46L346 397.39a144.13 144.13 0 0 1-26 2.61zm313.82 58.1l-110.55-85.44a331.25 331.25 0 0 0 81.25-102.07 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64a308.15 308.15 0 0 0-147.32 37.7L45.46 3.37A16 16 0 0 0 23 6.18L3.37 31.45A16 16 0 0 0 6.18 53.9l588.36 454.73a16 16 0 0 0 22.46-2.81l19.64-25.27a16 16 0 0 0-2.82-22.45zm-183.72-142l-39.3-30.38A94.75 94.75 0 0 0 416 256a94.76 94.76 0 0 0-121.31-92.21A47.65 47.65 0 0 1 304 192a46.64 46.64 0 0 1-1.54 10l-73.61-56.89A142.31 142.31 0 0 1 320 112a143.92 143.92 0 0 1 144 144c0 21.63-5.29 41.79-13.9 60.11z"
+            />
+          </svg>
+          <p>Quantity</p>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 p-1 rounded-full cursor-pointer"
+            viewBox="0 0 640 640"
+            id="showiconProduct"
+            onclick="hideProduct()"
+          >
+            <path
+              d="M320 96C239.2 96 174.5 132.8 127.4 176.6C80.6 220.1 49.3 272 34.4 307.7C31.1 315.6 31.1 324.4 34.4 332.3C49.3 368 80.6 420 127.4 463.4C174.5 507.1 239.2 544 320 544C400.8 544 465.5 507.2 512.6 463.4C559.4 419.9 590.7 368 605.6 332.3C608.9 324.4 608.9 315.6 605.6 307.7C590.7 272 559.4 220 512.6 176.6C465.5 132.9 400.8 96 320 96zM176 320C176 240.5 240.5 176 320 176C399.5 176 464 240.5 464 320C464 399.5 399.5 464 320 464C240.5 464 176 399.5 176 320zM320 256C320 291.3 291.3 320 256 320C244.5 320 233.7 317 224.3 311.6C223.3 322.5 224.2 333.7 227.2 344.8C240.9 396 293.6 426.4 344.8 412.7C396 399 426.4 346.3 412.7 295.1C400.5 249.4 357.2 220.3 311.6 224.3C316.9 233.6 320 244.4 320 256z"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 hidden p-1 rounded-full cursor-pointer"
+            onclick="showProduct()"
+            id="hideiconProduct"
+            viewBox="0 0 640 512"
+          >
+            <path
+              d="M320 400c-75.85 0-137.25-58.71-142.9-133.11L72.2 185.82c-13.79 17.3-26.48 35.59-36.72 55.59a32.35 32.35 0 0 0 0 29.19C89.71 376.41 197.07 448 320 448c26.91 0 52.87-4 77.89-10.46L346 397.39a144.13 144.13 0 0 1-26 2.61zm313.82 58.1l-110.55-85.44a331.25 331.25 0 0 0 81.25-102.07 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64a308.15 308.15 0 0 0-147.32 37.7L45.46 3.37A16 16 0 0 0 23 6.18L3.37 31.45A16 16 0 0 0 6.18 53.9l588.36 454.73a16 16 0 0 0 22.46-2.81l19.64-25.27a16 16 0 0 0-2.82-22.45zm-183.72-142l-39.3-30.38A94.75 94.75 0 0 0 416 256a94.76 94.76 0 0 0-121.31-92.21A47.65 47.65 0 0 1 304 192a46.64 46.64 0 0 1-1.54 10l-73.61-56.89A142.31 142.31 0 0 1 320 112a143.92 143.92 0 0 1 144 144c0 21.63-5.29 41.79-13.9 60.11z"
+            />
+          </svg>
+          <p>Product</p>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 p-1 rounded-full cursor-pointer"
+            viewBox="0 0 640 640"
+            id="showiconDate"
+            onclick="hideDate()"
+          >
+            <path
+              d="M320 96C239.2 96 174.5 132.8 127.4 176.6C80.6 220.1 49.3 272 34.4 307.7C31.1 315.6 31.1 324.4 34.4 332.3C49.3 368 80.6 420 127.4 463.4C174.5 507.1 239.2 544 320 544C400.8 544 465.5 507.2 512.6 463.4C559.4 419.9 590.7 368 605.6 332.3C608.9 324.4 608.9 315.6 605.6 307.7C590.7 272 559.4 220 512.6 176.6C465.5 132.9 400.8 96 320 96zM176 320C176 240.5 240.5 176 320 176C399.5 176 464 240.5 464 320C464 399.5 399.5 464 320 464C240.5 464 176 399.5 176 320zM320 256C320 291.3 291.3 320 256 320C244.5 320 233.7 317 224.3 311.6C223.3 322.5 224.2 333.7 227.2 344.8C240.9 396 293.6 426.4 344.8 412.7C396 399 426.4 346.3 412.7 295.1C400.5 249.4 357.2 220.3 311.6 224.3C316.9 233.6 320 244.4 320 256z"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 hidden p-1 rounded-full cursor-pointer"
+            onclick="showDate()"
+            id="hideiconDate"
+            viewBox="0 0 640 512"
+          >
+            <path
+              d="M320 400c-75.85 0-137.25-58.71-142.9-133.11L72.2 185.82c-13.79 17.3-26.48 35.59-36.72 55.59a32.35 32.35 0 0 0 0 29.19C89.71 376.41 197.07 448 320 448c26.91 0 52.87-4 77.89-10.46L346 397.39a144.13 144.13 0 0 1-26 2.61zm313.82 58.1l-110.55-85.44a331.25 331.25 0 0 0 81.25-102.07 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64a308.15 308.15 0 0 0-147.32 37.7L45.46 3.37A16 16 0 0 0 23 6.18L3.37 31.45A16 16 0 0 0 6.18 53.9l588.36 454.73a16 16 0 0 0 22.46-2.81l19.64-25.27a16 16 0 0 0-2.82-22.45zm-183.72-142l-39.3-30.38A94.75 94.75 0 0 0 416 256a94.76 94.76 0 0 0-121.31-92.21A47.65 47.65 0 0 1 304 192a46.64 46.64 0 0 1-1.54 10l-73.61-56.89A142.31 142.31 0 0 1 320 112a143.92 143.92 0 0 1 144 144c0 21.63-5.29 41.79-13.9 60.11z"
+            />
+          </svg>
+          <p>Date</p>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 p-1 rounded-full cursor-pointer"
+            viewBox="0 0 640 640"
+            id="showiconPrice"
+            onclick="hidePrice()"
+          >
+            <path
+              d="M320 96C239.2 96 174.5 132.8 127.4 176.6C80.6 220.1 49.3 272 34.4 307.7C31.1 315.6 31.1 324.4 34.4 332.3C49.3 368 80.6 420 127.4 463.4C174.5 507.1 239.2 544 320 544C400.8 544 465.5 507.2 512.6 463.4C559.4 419.9 590.7 368 605.6 332.3C608.9 324.4 608.9 315.6 605.6 307.7C590.7 272 559.4 220 512.6 176.6C465.5 132.9 400.8 96 320 96zM176 320C176 240.5 240.5 176 320 176C399.5 176 464 240.5 464 320C464 399.5 399.5 464 320 464C240.5 464 176 399.5 176 320zM320 256C320 291.3 291.3 320 256 320C244.5 320 233.7 317 224.3 311.6C223.3 322.5 224.2 333.7 227.2 344.8C240.9 396 293.6 426.4 344.8 412.7C396 399 426.4 346.3 412.7 295.1C400.5 249.4 357.2 220.3 311.6 224.3C316.9 233.6 320 244.4 320 256z"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 hidden p-1 rounded-full cursor-pointer"
+            onclick="showPrice()"
+            id="hideiconPrice"
+            viewBox="0 0 640 512"
+          >
+            <path
+              d="M320 400c-75.85 0-137.25-58.71-142.9-133.11L72.2 185.82c-13.79 17.3-26.48 35.59-36.72 55.59a32.35 32.35 0 0 0 0 29.19C89.71 376.41 197.07 448 320 448c26.91 0 52.87-4 77.89-10.46L346 397.39a144.13 144.13 0 0 1-26 2.61zm313.82 58.1l-110.55-85.44a331.25 331.25 0 0 0 81.25-102.07 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64a308.15 308.15 0 0 0-147.32 37.7L45.46 3.37A16 16 0 0 0 23 6.18L3.37 31.45A16 16 0 0 0 6.18 53.9l588.36 454.73a16 16 0 0 0 22.46-2.81l19.64-25.27a16 16 0 0 0-2.82-22.45zm-183.72-142l-39.3-30.38A94.75 94.75 0 0 0 416 256a94.76 94.76 0 0 0-121.31-92.21A47.65 47.65 0 0 1 304 192a46.64 46.64 0 0 1-1.54 10l-73.61-56.89A142.31 142.31 0 0 1 320 112a143.92 143.92 0 0 1 144 144c0 21.63-5.29 41.79-13.9 60.11z"
+            />
+          </svg>
+          <p>Total Price</p>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 p-1 rounded-full cursor-pointer"
+            viewBox="0 0 640 640"
+            id="showiconStatus"
+            onclick="hideStatus()"
+          >
+            <path
+              d="M320 96C239.2 96 174.5 132.8 127.4 176.6C80.6 220.1 49.3 272 34.4 307.7C31.1 315.6 31.1 324.4 34.4 332.3C49.3 368 80.6 420 127.4 463.4C174.5 507.1 239.2 544 320 544C400.8 544 465.5 507.2 512.6 463.4C559.4 419.9 590.7 368 605.6 332.3C608.9 324.4 608.9 315.6 605.6 307.7C590.7 272 559.4 220 512.6 176.6C465.5 132.9 400.8 96 320 96zM176 320C176 240.5 240.5 176 320 176C399.5 176 464 240.5 464 320C464 399.5 399.5 464 320 464C240.5 464 176 399.5 176 320zM320 256C320 291.3 291.3 320 256 320C244.5 320 233.7 317 224.3 311.6C223.3 322.5 224.2 333.7 227.2 344.8C240.9 396 293.6 426.4 344.8 412.7C396 399 426.4 346.3 412.7 295.1C400.5 249.4 357.2 220.3 311.6 224.3C316.9 233.6 320 244.4 320 256z"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 hidden p-1 rounded-full cursor-pointer"
+            onclick="showStatus()"
+            id="hideiconStatus"
+            viewBox="0 0 640 512"
+          >
+            <path
+              d="M320 400c-75.85 0-137.25-58.71-142.9-133.11L72.2 185.82c-13.79 17.3-26.48 35.59-36.72 55.59a32.35 32.35 0 0 0 0 29.19C89.71 376.41 197.07 448 320 448c26.91 0 52.87-4 77.89-10.46L346 397.39a144.13 144.13 0 0 1-26 2.61zm313.82 58.1l-110.55-85.44a331.25 331.25 0 0 0 81.25-102.07 32.35 32.35 0 0 0 0-29.19C550.29 135.59 442.93 64 320 64a308.15 308.15 0 0 0-147.32 37.7L45.46 3.37A16 16 0 0 0 23 6.18L3.37 31.45A16 16 0 0 0 6.18 53.9l588.36 454.73a16 16 0 0 0 22.46-2.81l19.64-25.27a16 16 0 0 0-2.82-22.45zm-183.72-142l-39.3-30.38A94.75 94.75 0 0 0 416 256a94.76 94.76 0 0 0-121.31-92.21A47.65 47.65 0 0 1 304 192a46.64 46.64 0 0 1-1.54 10l-73.61-56.89A142.31 142.31 0 0 1 320 112a143.92 143.92 0 0 1 144 144c0 21.63-5.29 41.79-13.9 60.11z"
+            />
+          </svg>
+          <p>Status</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- transactions table  -->
+
+    <div class="m-1 mb-8 overflow-x-scroll scrollbar-hide">
+      <table class="min-w-max mx-auto" id="theTable">
+        <thead>
+          <tr>
+            <th
+              class="w-56 bg-gray-600 text-white border-black border-2 hidden emailCol"
+            >
+              Email
+            </th>
+            <th class="w-56 bg-gray-600 text-white border-black border-2">
+              <button class="w-56 p-2" id="sortByID">ID</button>
+            </th>
+            <th class="w-56 bg-gray-600 text-white border-black border-2">
+              <button class="w-56 p-2" id="sortByQuant">Quantity</button>
+            </th>
+            <th class="w-56 bg-gray-600 text-white border-black border-2">
+              <p class="w-56 p-2">Products</p>
+            </th>
+            <th class="w-56 bg-gray-600 text-white border-black border-2">
+              <button class="w-56 p-2" id="sortByDate">Date</button>
+            </th>
+            <th class="w-56 bg-gray-600 text-white border-black border-2">
+              <button class="w-56 p-2" id="sortByPrice">Total Price</button>
+            </th>
+            <th class="w-56 p-2 bg-gray-600 text-white border-black border-2">
+              Status
+            </th>
+          </tr>
+          <tr class="text-xs">
+            <th
+              class="w-56 bg-gray-600 text-white border-black border-2 hidden emailCol"
+            >
+              <input
+                id="emailSearch"
+                type="text"
+                maxlength="40"
+                placeholder="Search Email..."
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg"
+              />
+            </th>
+            <th class="w-56 bg-gray-600 text-white border-black border-2">
+              <input
+                id="idSearch"
+                type="text"
+                oninput="
+                  this.value = this.value.replace(/[^0-9]/g, '').slice(0, 5)
+                "
+                inputmode="numeric"
+                placeholder="Search ID..."
+                class="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+              />
+            </th>
+            <th class="w-56 bg-gray-600 text-white border-black border-2">
+              <input
+                id="quantSearch"
+                oninput="
+                  this.value = this.value.replace(/[^0-9]/g, '').slice(0, 5)
+                "
+                type="text"
+                inputmode="numeric"
+                maxlength="20"
+                placeholder="Search Quantity..."
+                class="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+              />
+            </th>
+            <th class="w-56 bg-gray-600 text-white border-black border-2">
+              <input
+                id="productSearch"
+                type="text"
+                maxlength="40"
+                placeholder="Search Products..."
+                class="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+              />
+            </th>
+            <th
+              class="w-56 py-2 bg-gray-600 text-gray-300 border-black border-2"
+            >
+              <input
+                id="dateSearch"
+                type="date"
+                placeholder="Search Date..."
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+              />
+            </th>
+            <th class="w-56 bg-gray-600 text-white border-black border-2">
+              <input
+                id="priceSearch"
+                oninput="
+                  this.value = this.value.replace(/[^0-9]/g, '').slice(0, 7)
+                "
+                type="text"
+                placeholder="Search Price..."
+                class="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+              />
+            </th>
+            <th
+              class="w-56 py-2 bg-gray-600 text-gray-300 border-black border-2"
+            >
+              <select class="cursor-pointer" name="selectStt" id="sttSearch">
+                <option class="text-black" value="">-- select --</option>
+                <option class="text-black" value="Delivered">Delivered</option>
+                <option class="text-black" value="Pending">Pending</option>
+              </select>
+            </th>
+          </tr>
+        </thead>
+        <tbody id="transaction_body_confirm">
+          <!-- data in js  -->
+        </tbody>
+      </table>
+    </div>
+    <div class="flex justify-center gap-2">
+      <button
+        class="prev px-2 rounded-2xl cursor-pointer bg-[#f5f5f5] hover:bg-[#ececec]"
+      >
+        Prev
+      </button>
+      <div id="pagination" class="flex gap-2 justify-center"></div>
+      <button
+        class="nxt px-2 rounded-2xl cursor-pointer bg-[#f5f5f5] hover:bg-[#ececec]"
+      >
+        Next
+      </button>
+    </div>
+
+    <!-- script  -->
+
+    <script>
+      let productsJSON = [];
+      let currentMail = localStorage.getItem("currentEmail");
+      if (!currentMail) {
+        window.location.href = "login.html";
+      }
+
+      let confirmData = [];
+      let homeDashboard = document.getElementById("homeDashboard");
+      let allORpage = document.getElementById("allORpage");
+      let profileORuser = document.getElementById("profileORuser");
+      let emailCol = document.querySelectorAll(".emailCol");
+
+      if (currentMail == "super@admin.com") {
+        let allConfirm = Object.keys(localStorage)
+          .filter((key) => key.endsWith("_confirm"))
+          .map((key) => {
+            const email = key.replace("_confirm", "");
+            const orders = JSON.parse(localStorage.getItem(key)) || [];
+
+            // Attach email to every order
+            return orders.map((order) => ({
+              ...order,
+              userEmail: email,
+            }));
+          });
+
+        confirmData = allConfirm.flat();
+        console.log(confirmData);
+        homeDashboard.innerText = "DashBoard";
+        allORpage.innerText = "All Orders";
+        profileORuser.innerText = "Users";
+        profileORuser.href = "/src/admin/users.html";
+        homeDashboard.href = "/src/admin/dashboard.html";
+        emailCol.forEach((col) => col.classList.remove("hidden"));
+      } else {
+        confirmData =
+          JSON.parse(localStorage.getItem(currentMail + "_confirm")) || [];
+      }
+
+      let filteredData = [...confirmData];
+      let currentPage = 1;
+      let itemsPerPage = 10;
+
+      let originalConfirmData = [...confirmData];
+      const tBody = document.getElementById("transaction_body_confirm");
+      fetch("products.json")
+        .then((res) => res.json())
+        .then((data) => {
+          productsJSON = data;
+          showTableData(confirmData);
+        });
+
+      function showTableData(data) {
+        tBody.innerHTML = "";
+
+        const statusFiltered = data.filter((order) => order.status === "1");
+        filteredData = statusFiltered;
+
+        tBody.innerHTML = "";
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const paginatedItems = statusFiltered.slice(start, end);
+
+        for (let i = 0; i < paginatedItems.length; i++) {
+          let order = paginatedItems[i];
+          let quantities = "";
+          let productNamesList = "";
+          let all_ids = [];
+
+          for (let j = 0; j < order.items.length; j++) {
+            let item = order.items[j];
+            let product = productsJSON.find((p) => p.idProduct == item.pro_id);
+            let productNames = product
+              ? product.nameProduct
+              : "Unknown Product";
+
+            quantities += item.quantity;
+            productNamesList += productNames;
+            all_ids.push(item.pro_id);
+
+            if (j < order.items.length - 1) {
+              quantities += "<br>";
+              productNamesList += "<br>";
+            }
+          }
+
+          let hiddenClass = currentMail !== "super@admin.com" ? "hidden" : "";
+
+          tBody.innerHTML += `<tr class="bg-gray-200 text-xs" id="t_row">
+            <td class="w-56 border-2 py-2 ${hiddenClass} text-center emailCol td">${order.userEmail}</td>
+            <td class="hid w-56 border-2 py-2 text-center td"><p class="idtd">${order.id || 1001 + i}</p></td>
+            <td class="hid w-56 border-2 py-2 text-center td"><p class="quanttd">${quantities}</p></td>
+            <td class="hid w-56 border-2 py-2 text-center td"><p class="producttd">${productNamesList}</p></td>
+            <td class="hid w-56 border-2 py-2 text-center td"><p class="datetd">${order.date}</p></td>
+            <td class="hid w-56 border-2 py-2 text-center td"><p class="pricetd">$${order.total}</p></td>
+            <td class="hid w-56 border-2 py-2 bg-gray-600 text-center td"><button class="text-center px-2 rounded-xl text-white"><p> ${order.status === "1" ? "Delivered" : "Pending"} </p></td>
+          </tr>`;
+        }
+        showPagination();
+      }
+
+      let searchInput = document.getElementById("searchData");
+
+      searchInput.addEventListener("input", (e) => {
+        const value = e.target.value.toLowerCase();
+        const t_row = tBody.querySelectorAll("tr");
+
+        t_row.forEach((row) => {
+          const td = row.querySelectorAll(".td");
+          let matchFound = false;
+
+          td.forEach((t_d) => {
+            if (t_d.offsetParent === null) return;
+
+            const text = t_d.innerText.toLowerCase();
+
+            if (text.includes(value) && value !== "") {
+              t_d.classList.add("bg-yellow-600", "text-white");
+              matchFound = true;
+            } else {
+              t_d.classList.remove("bg-yellow-600", "text-white");
+            }
+          });
+
+          row.style.display = matchFound || value === "" ? "" : "none";
+        });
+      });
+
+      let searchEmailInput = document.getElementById("emailSearch");
+
+      searchEmailInput.addEventListener("input", (e) => {
+        const value = e.target.value.toLowerCase();
+        const t_row = tBody.querySelectorAll("tr");
+
+        t_row.forEach((row) => {
+          const td = row.querySelectorAll("td:nth-child(1)");
+          let matchFound = false;
+
+          td.forEach((t_d) => {
+            const text = t_d.innerText.toLowerCase();
+
+            if (text.includes(value) && value !== "") {
+              t_d.classList.add("bg-yellow-600", "text-white");
+              matchFound = true;
+            } else {
+              t_d.classList.remove("bg-yellow-600", "text-white");
+            }
+          });
+
+          row.style.display = matchFound || value === "" ? "" : "none";
+        });
+      });
+
+      let searchIDInput = document.getElementById("idSearch");
+
+      searchIDInput.addEventListener("input", (e) => {
+        const value = e.target.value.toLowerCase();
+        const t_row = tBody.querySelectorAll("tr");
+
+        t_row.forEach((row) => {
+          const td = row.querySelectorAll("td:nth-child(2)");
+          let matchFound = false;
+
+          td.forEach((t_d) => {
+            const text = t_d.innerText.toLowerCase();
+
+            if (text.includes(value) && value !== "") {
+              t_d.classList.add("bg-yellow-600", "text-white");
+              matchFound = true;
+            } else {
+              t_d.classList.remove("bg-yellow-600", "text-white");
+            }
+          });
+
+          row.style.display = matchFound || value === "" ? "" : "none";
+        });
+      });
+
+      let searchQuantInput = document.getElementById("quantSearch");
+
+      searchQuantInput.addEventListener("input", (e) => {
+        const value = e.target.value.toLowerCase();
+        const t_row = tBody.querySelectorAll("tr");
+
+        t_row.forEach((row) => {
+          const td = row.querySelectorAll("td:nth-child(3)");
+          let matchFound = false;
+
+          td.forEach((t_d) => {
+            const text = t_d.innerText.toLowerCase();
+
+            if (text.includes(value) && value !== "") {
+              t_d.classList.add("bg-yellow-600", "text-white");
+              matchFound = true;
+            } else {
+              t_d.classList.remove("bg-yellow-600", "text-white");
+            }
+          });
+
+          row.style.display = matchFound || value === "" ? "" : "none";
+        });
+      });
+      let searchProductInput = document.getElementById("productSearch");
+
+      searchProductInput.addEventListener("input", (e) => {
+        const value = e.target.value.toLowerCase();
+        const t_row = tBody.querySelectorAll("tr");
+
+        t_row.forEach((row) => {
+          const td = row.querySelectorAll("td:nth-child(4)");
+          let matchFound = false;
+
+          td.forEach((t_d) => {
+            const text = t_d.innerText.toLowerCase();
+
+            if (text.includes(value) && value !== "") {
+              t_d.classList.add("bg-yellow-600", "text-white");
+              matchFound = true;
+            } else {
+              t_d.classList.remove("bg-yellow-600", "text-white");
+            }
+          });
+
+          row.style.display = matchFound || value === "" ? "" : "none";
+        });
+      });
+
+      document
+        .getElementById("dateSearch")
+        .addEventListener("input", function () {
+          const selectedDate = this.value;
+
+          if (!selectedDate) {
+            filteredData = [...originalConfirmData];
+          } else {
+            filteredData = originalConfirmData.filter((order) => {
+              const orderDate = new Date(order.date);
+
+              const year = orderDate.getFullYear();
+              const month = String(orderDate.getMonth() + 1).padStart(2, "0");
+              const day = String(orderDate.getDate()).padStart(2, "0");
+
+              const formattedDate = `${year}-${month}-${day}`;
+
+              return formattedDate === selectedDate;
+            });
+          }
+
+          currentPage = 1;
+          showTableData(filteredData);
+        });
+
+      let searchPriceInput = document.getElementById("priceSearch");
+
+      searchPriceInput.addEventListener("input", (e) => {
+        const value = e.target.value.toLowerCase();
+        const t_row = tBody.querySelectorAll("tr");
+
+        t_row.forEach((row) => {
+          const td = row.querySelectorAll("td:nth-child(6)");
+          let matchFound = false;
+
+          td.forEach((t_d) => {
+            const text = t_d.innerText.toLowerCase();
+
+            if (text.includes(value) && value !== "") {
+              t_d.classList.add("bg-yellow-600", "text-white");
+              matchFound = true;
+            } else {
+              t_d.classList.remove("bg-yellow-600", "text-white");
+            }
+          });
+
+          row.style.display = matchFound || value === "" ? "" : "none";
+        });
+      });
+
+      let searchStatusInput = document.getElementById("sttSearch");
+
+      searchStatusInput.addEventListener("input", (e) => {
+        const value = e.target.value.toLowerCase();
+        const t_row = tBody.querySelectorAll("tr");
+
+        t_row.forEach((row) => {
+          const td = row.querySelectorAll("td:nth-child(7)");
+          let matchFound = false;
+
+          td.forEach((t_d) => {
+            const text = t_d.innerText.toLowerCase();
+
+            if (text.includes(value) && value !== "") {
+              t_d.classList.add("bg-yellow-600", "text-white");
+              matchFound = true;
+            } else {
+              t_d.classList.remove("bg-yellow-600", "text-white");
+            }
+          });
+
+          row.style.display = matchFound || value === "" ? "" : "none";
+        });
+      });
+
+      let sortByID = document.getElementById("sortByID");
+      let sortByDate = document.getElementById("sortByDate");
+      let sortByPrice = document.getElementById("sortByPrice");
+      let sortByQuant = document.getElementById("sortByQuant");
+
+      sortByID.addEventListener("click", () => {
+        if (sortByID.classList.contains("activeSort")) {
+          showTableData(originalConfirmData);
+          sortByID.classList.remove("activeSort");
+        } else {
+          sorted = [...confirmData];
+          sorted.sort((a, b) => (a.id || 0) - (b.id || 0));
+          showTableData(sorted);
+          sortByID.classList.add("activeSort");
+          sortByDate.classList.remove("activeSort");
+          sortByPrice.classList.remove("activeSort");
+        }
+      });
+
+      function getTotalQuantity(order) {
+        return order.items.reduce((sum, item) => sum + item.quantity, 0);
+      }
+
+      let sortQuantAsc = true;
+
+      document.getElementById("sortByQuant").addEventListener("click", () => {
+        filteredData.sort((a, b) => {
+          let totalA = getTotalQuantity(a);
+          let totalB = getTotalQuantity(b);
+
+          return sortQuantAsc ? totalA - totalB : totalB - totalA;
+        });
+
+        sortQuantAsc = !sortQuantAsc;
+
+        currentPage = 1;
+        showTableData(filteredData);
+      });
+
+      sortByDate.addEventListener("click", () => {
+        if (sortByDate.classList.contains("activeSort")) {
+          showTableData(originalConfirmData);
+          sortByDate.classList.remove("activeSort");
+        } else {
+          sorted = [...confirmData];
+          sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
+          showTableData(sorted);
+          sortByDate.classList.add("activeSort");
+          sortByID.classList.remove("activeSort");
+          sortByQuant.classList.remove("activeSort");
+          sortByPrice.classList.remove("activeSort");
+        }
+      });
+      sortByPrice.addEventListener("click", () => {
+        if (sortByPrice.classList.contains("activeSort")) {
+          sorted = [...confirmData];
+          sorted.sort((a, b) => a.total - b.total);
+          showTableData(sorted);
+          sortByPrice.classList.remove("activeSort");
+          sortByQuant.classList.remove("activeSort");
+          sortByID.classList.remove("activeSort");
+          sortByDate.classList.remove("activeSort");
+        } else {
+          sorted = [...confirmData];
+          sorted.sort((a, b) => b.total - a.total);
+          showTableData(sorted);
+          sortByPrice.classList.add("activeSort");
+          sortByQuant.classList.remove("activeSort");
+          sortByID.classList.remove("activeSort");
+          sortByDate.classList.remove("activeSort");
+        }
+      });
+
+      // pagination
+
+      const showPagination = () => {
+        const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+        const container = document.getElementById("pagination");
+        container.innerHTML = "";
+
+        for (let i = 1; i <= totalPages; i++) {
+          const btn = document.createElement("button");
+          btn.innerText = i;
+          btn.classList.add("px-3", "py-1", "cursor-pointer", "border");
+
+          if (i === currentPage) {
+            btn.classList.add("bg-gray-600", "cursor-pointer", "text-white");
+          }
+
+          btn.addEventListener("click", () => {
+            currentPage = i;
+            showTableData(filteredData);
+          });
+
+          container.appendChild(btn);
+        }
+      };
+
+      document.querySelector(".prev").addEventListener("click", () => {
+        if (currentPage > 1) {
+          currentPage--;
+          showTableData(filteredData);
+        }
+      });
+
+      document.querySelector(".nxt").addEventListener("click", () => {
+        const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+        if (currentPage < totalPages) {
+          currentPage++;
+          showTableData(filteredData);
+        }
+      });
+
+      // show/hide
+
+      function toggleColumn(columnIndex, hide) {
+        const rows = document.querySelectorAll("#theTable tr");
+
+        rows.forEach((row) => {
+          const t_row = row.children[columnIndex];
+          if (t_row) {
+            t_row.style.display = hide ? "none" : "";
+          }
+        });
+      }
+
+      function showID() {
+        document.getElementById("showiconID").classList.remove("hidden");
+        document.getElementById("hideiconID").classList.add("hidden");
+
+        toggleColumn(1, false);
+      }
+      function hideID() {
+        document.getElementById("showiconID").classList.add("hidden");
+        document.getElementById("hideiconID").classList.remove("hidden");
+
+        toggleColumn(1, true);
+      }
+      function showQuant() {
+        document.getElementById("showiconQuant").classList.remove("hidden");
+        document.getElementById("hideiconQuant").classList.add("hidden");
+        toggleColumn(2, false);
+      }
+      function hideQuant() {
+        document.getElementById("showiconQuant").classList.add("hidden");
+        document.getElementById("hideiconQuant").classList.remove("hidden");
+        toggleColumn(2, true);
+      }
+      function showProduct() {
+        document.getElementById("showiconProduct").classList.remove("hidden");
+        document.getElementById("hideiconProduct").classList.add("hidden");
+        toggleColumn(3, false);
+      }
+      function hideProduct() {
+        document.getElementById("showiconProduct").classList.add("hidden");
+        document.getElementById("hideiconProduct").classList.remove("hidden");
+        toggleColumn(3, true);
+      }
+      function showDate() {
+        document.getElementById("showiconDate").classList.remove("hidden");
+        document.getElementById("hideiconDate").classList.add("hidden");
+        toggleColumn(4, false);
+      }
+      function hideDate() {
+        document.getElementById("showiconDate").classList.add("hidden");
+        document.getElementById("hideiconDate").classList.remove("hidden");
+        toggleColumn(4, true);
+      }
+      function showPrice() {
+        document.getElementById("showiconPrice").classList.remove("hidden");
+        document.getElementById("hideiconPrice").classList.add("hidden");
+        toggleColumn(5, false);
+      }
+      function hidePrice() {
+        document.getElementById("showiconPrice").classList.add("hidden");
+        document.getElementById("hideiconPrice").classList.remove("hidden");
+        toggleColumn(5, true);
+      }
+      function showStatus() {
+        document.getElementById("showiconStatus").classList.remove("hidden");
+        document.getElementById("hideiconStatus").classList.add("hidden");
+        toggleColumn(6, false);
+      }
+      function hideStatus() {
+        document.getElementById("showiconStatus").classList.add("hidden");
+        document.getElementById("hideiconStatus").classList.remove("hidden");
+        toggleColumn(6, true);
+      }
+
+      // logout
+      function logout() {
+        if (confirm("Do you want to logout?")) {
+          localStorage.removeItem("currentEmail");
+        } else {
+          return;
+        }
+        localStorage.removeItem(currentMail + "biometricVerification");
+        location.reload();
+      }
+    </script>
+  </body>
+</html>

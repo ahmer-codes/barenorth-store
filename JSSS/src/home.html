@@ -1,0 +1,313 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <title>Home</title>
+    <style>
+      .modal-overlay {
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+        display: flex;
+        justify-content: end;
+      }
+      .show {
+        visibility: visible;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .activeSort {
+        background-color: #dcdcdc;
+      }
+      .item .addCart {
+        opacity: 0;
+        transform: translateY(10px);
+        pointer-events: none;
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .item:hover .addCart {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+    </style>
+  </head>
+  <body class="">
+    <ul
+      class="flex items-center justify-around max-[290px]:justify-between mr-4 font-semibold max-[800px]:text-xs"
+    >
+      <li>
+        <h1 class="w-24">
+          <img src="Imgs/1770734094459.png" alt="BareNorth Logo" class="w-24" />
+        </h1>
+      </li>
+      <li class="text-black font-bold hover:text-black max-[450px]:hidden">
+        <a href="home.html">Home</a>
+      </li>
+      <li
+        class="text-gray-600 hover:text-black hover:underline max-[450px]:hidden"
+      >
+        <a href="orderpage.html">Order Page</a>
+      </li>
+      <li
+        class="text-gray-600 hover:text-black hover:underline max-[650px]:hidden"
+      >
+        <a href="transaction.html">Transaction Page</a>
+      </li>
+      <li
+        class="text-gray-600 hover:text-black hover:underline max-[650px]:hidden"
+      >
+        <a href="logs.html">Login Details</a>
+      </li>
+      <li
+        class="text-gray-600 hover:text-black hover:underline max-[650px]:hidden"
+      >
+        <a href="profilepage.html">Profile Page</a>
+      </li>
+      <li title="logout">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          onclick="logout()"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-logout cursor-pointer"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path
+            d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"
+          />
+          <path d="M9 12h12l-3 -3" />
+          <path d="M18 15l3 -3" />
+        </svg>
+      </li>
+      <li class="min-[650px]:hidden max-[450px]:hidden">
+        <a href="profilepage.html">Your Account</a>
+      </li>
+      <li
+        class="text-gray-600 hover:text-black hover:underline max-[290px]:hidden"
+      >
+        <div class="flex justify-center">
+          <div class="relative w-96 max-[1000px]:w-32">
+            <input
+              id="searchData"
+              type="text"
+              placeholder="Search..."
+              class="w-full px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+            />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="absolute right-3 top-2.5 h-5 w-5 text-gray-500 max-[800px]:hidden"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-4.35-4.35m1.85-5.15a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </div>
+        </div>
+      </li>
+      <li
+        id="openbtn"
+        title="Cart"
+        class="text-gray-600 hover:text-black cursor-pointer flex items-baseline"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 640 512"
+          width="35"
+          class="relative"
+        >
+          <!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+          <path
+            d="M24-16C10.7-16 0-5.3 0 8S10.7 32 24 32l45.3 0c3.9 0 7.2 2.8 7.9 6.6l52.1 286.3c6.2 34.2 36 59.1 70.8 59.1L456 384c13.3 0 24-10.7 24-24s-10.7-24-24-24l-255.9 0c-11.6 0-21.5-8.3-23.6-19.7l-5.1-28.3 303.6 0c30.8 0 57.2-21.9 62.9-52.2L568.9 69.9C572.6 50.2 557.5 32 537.4 32l-412.7 0-.4-2c-4.8-26.6-28-46-55.1-46L24-16zM208 512a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm224 0a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"
+          />
+        </svg>
+        <span
+          id="countOut"
+          class="flex justify-center items-center bg-gray-500 hover:bg-gray-700 text-white p-2.5 rounded-2xl w-2 h-6 text-xs absolute right-14 translate-3 max-[1000px]:translate-x-6"
+          >0</span
+        >
+      </li>
+    </ul>
+
+    <nav
+      class="flex flex-col items-center justify-center w-full min-[450px]:hidden"
+    >
+      <ul
+        class="flex flex-col items-center w-full justify-center gap-2 border-gray-400 bg-gray-200 text-gray-700"
+      >
+        <li class="p-2 cursor-pointer font-semibold hover:text-black">
+          <a href="home.html">Home</a>
+        </li>
+        <li class="p-2 cursor-pointer font-semibold hover:text-black">
+          Order Page
+        </li>
+        <li class="p-2 cursor-pointer font-semibold hover:text-black">
+          Transaction Page
+        </li>
+        <li class="p-2 cursor-pointer font-semibold hover:text-black">
+          Login Detail
+        </li>
+        <li class="p-2 cursor-pointer font-semibold hover:text-black">
+          Profile Page
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Products -->
+
+    <section class="">
+      <div class="flex justify-between mx-28 max-[370px]:mx-2">
+        <div class="flex text-2xl max-[720px]:shrink justify-between">
+          <p class="text-gray-500 text-4xl font-semibold">Our Products</p>
+        </div>
+        <div class="flex gap-3 max-[1010px]:hidden text-xs">
+          <div
+            class="p-2 bg-[#f5f5f5] hover:bg-[#ececec] rounded-full cursor-pointer flex items-center"
+            id="lth"
+          >
+            <p>price low to high</p>
+          </div>
+          <div
+            class="p-2 bg-[#f5f5f5] hover:bg-[#ececec] rounded-full cursor-pointer flex items-center"
+            id="htl"
+          >
+            <p>price high to low</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-center">
+        <div
+          id="listProducts"
+          class="flex flex-wrap pl-10 mx-16 max-[370px]:flex-col max-[370px]:justify-center max-[370px]:items-center gap-6 pt-6 max-[365px]:justify-center scrollbar-hide max-[370px]:mx-4"
+        >
+          <!-- <div class="item gap-2">
+            <div
+              class="w-64 h-64 max-[1010px]:w-32 max-[1010px]:h-32 bg-[#f5f5f5] bg-[url(IMG/jacket.png)] bg-[length:170px_170px] max-[1010px]:bg-contain bg-no-repeat bg-center rounded-lg flex items-end"
+            >
+              <p
+                class="w-full h-10 p-2 bg-gray-600 hover:bg-gray-800 cursor-pointer text-white text-center bottom-0 rounded-b-lg addCart"
+              >
+                Add to Cart
+              </p>
+            </div>
+            <div class="flex">
+              <p class="max-[1010px]:text-xs">Kids Electric Car</p>
+              <p class="text-gray-800">$260</p>
+            </div>
+            <button
+              class="text-xs bg-gray-500 hover:bg-gray-700 text-white p-2 addCart rounded-xl cursor-pointer"
+            >
+              Add to cart
+            </button>
+          </div> -->
+        </div>
+      </div>
+      <div class="flex justify-center items-center mt-6">
+        <!-- <p
+          class="text-center w-56 text-white bg-gray-500 hover:bg-gray-700 rounded py-4 cursor-pointer"
+        >
+          View All Products
+        </p> -->
+      </div>
+    </section>
+
+    <!-- Modal  -->
+
+    <div id="modal" class="modal-overlay">
+      <div
+        class="modal-box relative w-[90%] max-w-lg rounded-l-2xl bg-gray-700 grid grid-rows-[70px_1fr_100px] h-screen"
+      >
+        <div>
+          <button
+            id="closebtn"
+            class="absolute cursor-pointer text-2xl text-white bg-none border-none right-6 top-3"
+          >
+            x
+          </button>
+          <h3 class="text-white m-6">Cart!</h3>
+        </div>
+        <div
+          id="listCart"
+          class="flex flex-col [&>*:nth-child(odd)]:bg-gray-500 [&>*:nth-child(even)]:text-gray-950 bg-gray-400 text-white overflow-y-scroll scrollbar-hide scroll-smooth"
+        >
+          <!-- <div class="item">
+            <div
+              class="grid grid-cols-[70px_150px_50px_1fr] gap-2.5 h-24 items-center text-center bg-gray-400 px-6"
+            >
+              <div><img src="IMG/toycar.png" alt="" /></div>
+              <div class="name">Kids Electric Car</div>
+              <div class="totalPrice">$260</div>
+              <div class="flex gap-2 items-center justify-center">
+                <span class="flex p-2 rounded-full bg-white text-black"><</span
+                ><span class="flex p-3 rounded-full bg-white text-black">1</span
+                ><span class="flex p-2 rounded-full bg-white text-black"
+                  >></span
+                >
+              </div>
+            </div>
+          </div> -->
+        </div>
+        <div class="flex flex-col">
+          <p
+            class="bg-gray-500 text-white bottom-0 px-4 py-2 flex justify-around"
+          >
+            <span> Total </span><span> : </span>
+            <span id="totalAmount">$0</span>
+          </p>
+          <div class="flex justify-center">
+            <button
+              id="checkoutbtn"
+              class="bg-gray-400 text-black hover:bg-gray-500 hover:text-white bottom-0 cursor-pointer px-4 py-2 rounded-xl mt-2"
+              onclick="cont()"
+            >
+              Checkout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-center gap-2">
+      <button
+        class="prev px-2 rounded-2xl cursor-pointer bg-[#f5f5f5] hover:bg-[#ececec]"
+      >
+        Prev
+      </button>
+      <div id="pagination" class="flex gap-2 justify-center"></div>
+      <button
+        class="nxt px-2 rounded-2xl cursor-pointer bg-[#f5f5f5] hover:bg-[#ececec]"
+      >
+        Next
+      </button>
+    </div>
+  </body>
+
+  <script src="Scripts/home.js"></script>
+</html>

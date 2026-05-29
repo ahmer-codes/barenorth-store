@@ -1,0 +1,164 @@
+[
+  {
+    "idProduct": 1,
+    "nameProduct": "Kids Electric Car",
+    "priceProduct": 260,
+    "imageProduct": "IMG/toycar.png"
+  },
+  {
+    "idProduct": 2,
+    "nameProduct": "Jr. Zoom Cleats",
+    "priceProduct": 960,
+    "imageProduct": "IMG/kit.png"
+  },
+  {
+    "idProduct": 3,
+    "nameProduct": "Canon DSLR",
+    "priceProduct": 160,
+    "imageProduct": "IMG/canon.png"
+  },
+  {
+    "idProduct": 4,
+    "nameProduct": "Quilted Satin Jacket",
+    "priceProduct": 960,
+    "imageProduct": "IMG/jacket.png"
+  },
+  {
+    "idProduct": 5,
+    "nameProduct": "Canon DSLR",
+    "priceProduct": 435,
+    "imageProduct": "IMG/canon.png"
+  },
+  {
+    "idProduct": 6,
+    "nameProduct": "Jr. Zoom Cleats",
+    "priceProduct": 543,
+    "imageProduct": "IMG/kit.png"
+  },
+  {
+    "idProduct": 7,
+    "nameProduct": "Kids Electric Car",
+    "priceProduct": 65,
+    "imageProduct": "IMG/toycar.png"
+  },
+  {
+    "idProduct": 8,
+    "nameProduct": "Laptop ASUS",
+    "priceProduct": 32,
+    "imageProduct": "IMG/laptop.png"
+  },
+  {
+    "idProduct": 9,
+    "nameProduct": "Jr. Zoom Cleats",
+    "priceProduct": 75,
+    "imageProduct": "IMG/kit.png"
+  },
+  {
+    "idProduct": 10,
+    "nameProduct": "Canon DSLR",
+    "priceProduct": 86,
+    "imageProduct": "IMG/canon.png"
+  },
+  {
+    "idProduct": 11,
+    "nameProduct": "Quilted Satin Jacket",
+    "priceProduct": 120,
+    "imageProduct": "IMG/jacket.png"
+  },
+  {
+    "idProduct": 12,
+    "nameProduct": "Canon DSLR",
+    "priceProduct": 450,
+    "imageProduct": "IMG/canon.png"
+  },
+  {
+    "idProduct": 13,
+    "nameProduct": "Jr. Zoom Cleats",
+    "priceProduct": 320,
+    "imageProduct": "IMG/kit.png"
+  },
+  {
+    "idProduct": 14,
+    "nameProduct": "Kids Electric Car",
+    "priceProduct": 120,
+    "imageProduct": "IMG/toycar.png"
+  },
+  {
+    "idProduct": 15,
+    "nameProduct": "Laptop ASUS",
+    "priceProduct": 340,
+    "imageProduct": "IMG/laptop.png"
+  },
+  {
+    "idProduct": 16,
+    "nameProduct": "Canon DSLR",
+    "priceProduct": 210,
+    "imageProduct": "IMG/canon.png"
+  },
+  {
+    "idProduct": 11,
+    "nameProduct": "Quilted Satin Jacket",
+    "priceProduct": 120,
+    "imageProduct": "IMG/jacket.png"
+  },
+  {
+    "idProduct": 12,
+    "nameProduct": "Canon DSLR",
+    "priceProduct": 450,
+    "imageProduct": "IMG/canon.png"
+  },
+  {
+    "idProduct": 13,
+    "nameProduct": "Jr. Zoom Cleats",
+    "priceProduct": 320,
+    "imageProduct": "IMG/kit.png"
+  },
+  {
+    "idProduct": 14,
+    "nameProduct": "Kids Electric Car",
+    "priceProduct": 120,
+    "imageProduct": "IMG/toycar.png"
+  },
+  {
+    "idProduct": 11,
+    "nameProduct": "Quilted Satin Jacket",
+    "priceProduct": 120,
+    "imageProduct": "IMG/jacket.png"
+  },
+  {
+    "idProduct": 12,
+    "nameProduct": "Canon DSLR",
+    "priceProduct": 450,
+    "imageProduct": "IMG/canon.png"
+  },
+  {
+    "idProduct": 13,
+    "nameProduct": "Jr. Zoom Cleats",
+    "priceProduct": 320,
+    "imageProduct": "IMG/kit.png"
+  },
+  {
+    "idProduct": 14,
+    "nameProduct": "Kids Electric Car",
+    "priceProduct": 120,
+    "imageProduct": "IMG/toycar.png"
+  },
+  {
+    "idProduct": 15,
+    "nameProduct": "Laptop ASUS",
+    "priceProduct": 340,
+    "imageProduct": "IMG/laptop.png"
+  },
+  {
+    "idProduct": 16,
+    "nameProduct": "Canon DSLR",
+    "priceProduct": 210,
+    "imageProduct": "IMG/canon.png"
+  },
+  {
+    "idProduct": 17,
+    "nameProduct": "Quilted Satin Jacket",
+    "priceProduct": 640,
+    "imageProduct": "IMG/jacket.png"
+  }
+]

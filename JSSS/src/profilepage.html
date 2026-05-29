@@ -1,0 +1,433 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <title>Profile Page</title>
+    <style>
+      .custom:hover .customize {
+        background-color: black;
+      }
+      .modal-overlay {
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+        display: flex;
+        justify-content: end;
+      }
+      .show {
+        visibility: visible;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- head  -->
+
+    <ul
+      class="flex items-center justify-around max-[290px]:justify-between mr-4 font-semibold max-[800px]:text-xs"
+    >
+      <li>
+        <h1 class="w-24">
+          <img src="Imgs/1770734094459.png" alt="BareNorth Logo" class="w-24" />
+        </h1>
+      </li>
+      <li
+        class="text-gray-600 hover:text-black hover:underline max-[450px]:hidden"
+      >
+        <a href="home.html">Home</a>
+      </li>
+      <li
+        class="text-gray-600 hover:text-black hover:underline max-[450px]:hidden"
+      >
+        <a href="orderpage.html">Order Page</a>
+      </li>
+      <li
+        class="text-gray-600 hover:text-black hover:underline max-[650px]:hidden"
+      >
+        <a href="transaction.html">Transaction Page</a>
+      </li>
+      <li
+        class="text-gray-600 hover:text-black hover:underline max-[650px]:hidden"
+      >
+        <a href="logs.html">Login Details</a>
+      </li>
+      <li class="text-black font-bold max-[650px]:hidden">
+        <a href="profilepage.html">Profile Page</a>
+      </li>
+      <li
+        class="min-[650px]:hidden max-[450px]:hidden text-black font-semibold"
+      >
+        Your Account
+      </li>
+      <li
+        class="text-gray-600 hover:text-black hover:underline max-[1000px]:hidden"
+      >
+        <div class="flex justify-center">
+          <div class="relative flex justify-center w-96 max-[1200px]:w-32">
+            <p class="tracking-widest insertMail"></p>
+          </div>
+        </div>
+      </li>
+      <li
+        class="text-red-500 hover:text-red-700 font-semibold hover:underline max-[290px]:hidden cursor-pointer"
+      >
+        <p onclick="logout()">Log Out</p>
+      </li>
+      <!-- <li
+        id="openbtn"
+        class="text-gray-600 hover:text-black cursor-pointer flex items-baseline"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 640 512"
+          width="35"
+          class="relative"
+        >
+          <path
+            d="M24-16C10.7-16 0-5.3 0 8S10.7 32 24 32l45.3 0c3.9 0 7.2 2.8 7.9 6.6l52.1 286.3c6.2 34.2 36 59.1 70.8 59.1L456 384c13.3 0 24-10.7 24-24s-10.7-24-24-24l-255.9 0c-11.6 0-21.5-8.3-23.6-19.7l-5.1-28.3 303.6 0c30.8 0 57.2-21.9 62.9-52.2L568.9 69.9C572.6 50.2 557.5 32 537.4 32l-412.7 0-.4-2c-4.8-26.6-28-46-55.1-46L24-16zM208 512a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm224 0a48 48 0 1 0 0-96 48 48 0 1 0 0 96z"
+          />
+        </svg>
+        <span
+          id="countOut"
+          class="flex justify-center items-center bg-gray-500 hover:bg-gray-700 text-white p-2.5 rounded-2xl w-2 h-6 text-xs absolute right-14 translate-3 max-[1000px]:translate-x-6"
+          >0</span
+        >
+      </li> -->
+    </ul>
+
+    <nav
+      class="flex flex-col items-center justify-center w-full min-[450px]:hidden"
+    >
+      <ul
+        class="flex flex-col items-center w-full justify-center gap-2 border-gray-400 bg-gray-200 text-gray-700"
+      >
+        <li class="p-2 cursor-pointer font-semibold hover:text-black">
+          <a href="home.html">Home</a>
+        </li>
+        <li class="p-2 cursor-pointer font-semibold hover:text-black">
+          Order Page
+        </li>
+        <li class="p-2 cursor-pointer font-semibold hover:text-black">
+          Transaction Page
+        </li>
+        <li class="p-2 cursor-pointer font-semibold hover:text-black">
+          Login Detail
+        </li>
+        <li class="p-2 cursor-pointer font-semibold hover:text-black">
+          Profile Page
+        </li>
+      </ul>
+    </nav>
+    <section class="flex items-center flex-col mb-4">
+      <p class="text-4xl font-semibold">User Data</p>
+    </section>
+
+    <section
+      class="flex max-[700px]:flex-col max-[700px]:gap-10 justify-evenly items-center mb-16"
+    >
+      <div class="">
+        <div class="bg-gray-300 py-2 px-12 pt-6 max-[300px]:px-4 rounded-t-lg">
+          <div class="w-48 h-48 rounded-full">
+            <img
+              id="photo"
+              class="w-48 h-48 rounded-full"
+              src="Imgs/pfp.png"
+              alt=""
+            />
+          </div>
+          <button
+            id="upload"
+            class="flex flex-col justify-center text-white custom"
+          >
+            <input
+              type="file"
+              name="Upload"
+              class="text-gray-700 opacity-5 w-24 translate-y-6"
+              id="uploaded"
+            />
+            <p class="cursor-pointer bg-gray-600 customize p-0.5 w-24 text-xs">
+              Upload/Update
+            </p>
+          </button>
+        </div>
+        <div class="bg-gray-200 p-2 text-center rounded-b-lg">
+          <div id="changeYourName" class="my-2 hidden">
+            <input
+              type="text"
+              id="inputEditName"
+              placeholder="Edit Your Name"
+              pattern="[A-Za-z\s]+"
+              class="px-2 py-2 w-28 text-xs border rounded-lg"
+              maxlength="20"
+              name="name"
+              required
+            />
+            <button
+              id="updateBtn"
+              class="border bg-gray-700 rounded-full text-xs text-white p-2 cursor-pointer"
+              onclick="newName()"
+            >
+              Update
+            </button>
+            <button
+              class="border bg-gray-700 rounded-full text-xs text-white p-2 cursor-pointer"
+              id="cancelEditBtn"
+              onclick="canceleditName()"
+            >
+              Cancel
+            </button>
+          </div>
+
+          <div class="my-2 flex justify-center gap-1">
+            <p id="insertUsername" class="text-4xl font-semibold relative">
+              Username
+            </p>
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-3 cursor-pointer absolute z-10"
+                id="nameEditBtn"
+                viewBox="0 0 512 512"
+                onclick="editName()"
+              >
+                <path
+                  d="M290.74 93.24l128.02 128.02-277.99 277.99-114.14 12.6C11.35 513.54-1.56 500.62.14 485.34l12.7-114.22 277.9-277.88zm207.2-19.06l-60.11-60.11c-18.75-18.75-49.16-18.75-67.91 0l-56.55 56.55 128.02 128.02 56.55-56.55c18.75-18.76 18.75-49.16 0-67.91z"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <div class="my-2 flex justify-center">
+            <p id="insertEmail" class="insertMail text-sm relative">Email</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bank  -->
+      <div class="">
+        <p class="text-4xl font-semibold mb-4 max-[700px]:text-center">
+          Card Details
+        </p>
+
+        <div
+          class="flex justify-between w-100 max-[450px]:w-56 bg-gray-200 p-4 border rounded-tr-lg rounded-tl-lg border-gray-300"
+        >
+          <p>Card Number</p>
+          <div class="flex">
+            <p id="cardNumber" class="text-gray-600"></p>
+            <div class="w-12"></div>
+          </div>
+        </div>
+        <div
+          class="flex justify-between w-100 max-[450px]:w-56 bg-gray-200 p-4 border border-gray-300"
+        >
+          <p>CVC</p>
+          <div class="flex">
+            <p id="CVC" class="text-gray-600"></p>
+            <div class="w-12"></div>
+          </div>
+        </div>
+        <div
+          class="flex justify-between w-100 max-[450px]:w-56 bg-gray-200 p-4 border border-gray-300"
+        >
+          <p>Expiry Date</p>
+          <div class="flex">
+            <p id="expireCard" class="text-gray-600"></p>
+            <div class="w-12"></div>
+          </div>
+        </div>
+        <div
+          class="flex justify-between w-100 max-[450px]:w-56 bg-gray-200 p-4 border rounded-br-lg rounded-bl-lg border-gray-300"
+        >
+          <p>Current Balance</p>
+          <div class="flex">
+            <p id="cardBalance" class="text-gray-600"></p>
+            <div class="w-12"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="modal" class="modal-overlay">
+      <div
+        class="modal-box relative w-[90%] max-w-lg rounded-xl bg-gray-700 grid grid-rows-[70px_1fr_100px] h-screen"
+      >
+        <div>
+          <button
+            id="closebtn"
+            class="absolute cursor-pointer text-2xl text-white bg-none border-none right-6 top-3"
+          >
+            x
+          </button>
+          <h3 class="text-white m-6">Cart!</h3>
+        </div>
+        <div
+          id="listCart"
+          class="flex flex-col [&>*:nth-child(odd)]:bg-gray-500 [&>*:nth-child(even)]:text-gray-950 bg-gray-400 text-white overflow-y-scroll scrollbar-hide scroll-smooth"
+        ></div>
+        <div class="flex flex-col">
+          <p
+            class="bg-gray-500 text-white bottom-0 px-4 py-2 flex justify-around"
+          >
+            <span> Total </span><span> : </span>
+            <span id="totalAmount">$0</span>
+          </p>
+          <div class="flex justify-center">
+            <button
+              id="checkoutbtn"
+              class="bg-gray-400 text-black hover:bg-gray-500 hover:text-white bottom-0 cursor-pointer px-4 py-2 rounded-xl mt-2"
+              onclick="cont()"
+            >
+              Checkout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    let currentMail = localStorage.getItem("currentEmail");
+    if (!currentMail || !localStorage.getItem(currentMail + "biometricVerification")) {
+      window.location.href = "login.html";
+    }
+    let userInfoString = localStorage.getItem(currentMail);
+    let userInfo = JSON.parse(userInfoString);
+    document.getElementById("insertUsername").innerText = userInfo.username;
+    let insertMails = document.getElementsByClassName("insertMail");
+    for (let x = 0; x < insertMails.length; x++) {
+      insertMails[x].innerHTML = currentMail;
+    }
+
+    let myMoney = localStorage.getItem(currentMail + "_money");
+    console.log(myMoney);
+
+    function getRandomCard(min, max) {
+      const genMoney = Math.floor(Math.random() * (max - min) + min);
+      return genMoney;
+    }
+
+    if (myMoney == null || myMoney == "") {
+      const money = getRandomCard(1111, 9999);
+      console.log(money);
+      localStorage.setItem(currentMail + "_money", money);
+    }
+
+    const expiDate = new Date("2030-05-05").toLocaleDateString();
+    console.log(expiDate);
+    const cardEntries = {
+      cardNumber: 88043169502378,
+      CVC: 343,
+      expDate: expiDate,
+    };
+    console.log(cardEntries);
+    localStorage.setItem("Card", JSON.stringify(cardEntries));
+
+    document.getElementById("cardNumber").innerText = cardEntries.cardNumber;
+    document.getElementById("CVC").innerText = cardEntries.CVC;
+    document.getElementById("expireCard").innerText = cardEntries.expDate;
+    document.getElementById("cardBalance").innerText = `$${myMoney}`;
+
+    // pfp
+
+    const uploadedIMG = document.getElementById("uploaded");
+    const photo = document.getElementById("photo");
+    if (userInfo.userPFP) {
+      photo.src = userInfo.userPFP;
+    }
+
+    uploadedIMG.addEventListener("change", function () {
+      const file = this.files[0];
+
+      if (!file) return;
+
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        const imgData = e.target.result;
+        photo.src = imgData;
+
+        userInfo.userPFP = imgData;
+        localStorage.setItem(currentMail, JSON.stringify(userInfo));
+      };
+
+      reader.readAsDataURL(file);
+      alert("Profile Picture Uploaded!");
+    });
+    function logout() {
+      if (confirm("Do you want to logout?")) {
+        localStorage.removeItem("currentEmail");
+      } else {
+        return;
+      }
+      location.reload();
+      localStorage.removeItem(currentMail + "biometricVerification");
+    }
+
+    function editName() {
+      const input = document.getElementById("inputEditName");
+
+      input.value = userInfo.username;
+      input.placeholder = "";
+
+      document.getElementById("insertUsername").classList.add("hidden");
+      document.getElementById("nameEditBtn").classList.add("hidden");
+      document.getElementById("changeYourName").classList.remove("hidden");
+
+      validateNameInput();
+    }
+    function canceleditName() {
+      document.getElementById("insertUsername").classList.remove("hidden");
+      document.getElementById("nameEditBtn").classList.remove("hidden");
+      document.getElementById("changeYourName").classList.add("hidden");
+    }
+    function newName() {
+      let value = document.getElementById("inputEditName").value;
+      if (value.trim() === "") {
+        return;
+      }
+      userInfo.username = value;
+      localStorage.setItem(currentMail, JSON.stringify(userInfo));
+      document.getElementById("insertUsername").innerText = value;
+      document.getElementById("inputEditName").value = "";
+      document.getElementById("insertUsername").classList.remove("hidden");
+      document.getElementById("nameEditBtn").classList.remove("hidden");
+      document.getElementById("changeYourName").classList.add("hidden");
+      alert("Name Updated");
+    }
+
+    const inputEditName = document.getElementById("inputEditName");
+    const updateBtn = document.getElementById("updateBtn");
+
+    function validateNameInput() {
+      const value = inputEditName.value.trim();
+      const isInvalid = value.length === 0 || value === userInfo.username;
+
+      updateBtn.disabled = isInvalid;
+
+      updateBtn.classList.toggle("bg-gray-400", isInvalid);
+      updateBtn.classList.toggle("cursor-not-allowed", isInvalid);
+
+      updateBtn.classList.toggle("bg-gray-700", !isInvalid);
+      updateBtn.classList.toggle("cursor-pointer", !isInvalid);
+    }
+
+    // Run on typing
+    inputEditName.addEventListener("input", validateNameInput);
+
+    // Run immediately on page load
+    validateNameInput();
+  </script>
+</html>

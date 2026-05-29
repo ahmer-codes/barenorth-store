@@ -1,0 +1,821 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <title>Checkout</title>
+    <style>
+      .modal-overlay {
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        display: none;
+      }
+      .show {
+        display: flex;
+        justify-items: center;
+        align-items: center;
+      }
+      .modal-box {
+        position: relative;
+        width: 90%;
+        max-width: 400px;
+        border-radius: 10px;
+        background-color: green;
+        font-size: larger;
+        color: white;
+        padding: 40px;
+        margin: -150px auto 150px auto;
+      }
+      #closebtnSuccess {
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        cursor: pointer;
+        font-size: 24px;
+        border: none;
+        background: none;
+      }
+      /* #openbtn {
+        font-size: 24px;
+        margin: 40px;
+        padding: 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      } */
+       .modal-overlayFail {
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        display: none;
+      }
+      .show {
+        display: flex;
+        justify-items: center;
+        align-items: center;
+      }
+      .modal-boxFail {
+        position: relative;
+        width: 90%;
+        max-width: 400px;
+        border-radius: 10px;
+        background-color: red;
+        font-size: larger;
+        color: white;
+        padding: 40px;
+        margin: -150px auto 150px auto;
+      }
+      #closebtnFail {
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        cursor: pointer;
+        font-size: 24px;
+        border: none;
+        background: none;
+      }
+      /* #openbtn {
+        font-size: 24px;
+        margin: 40px;
+        padding: 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      } */
+       .modal-overlayInvalidCardExp {
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        display: none;
+      }
+      .show {
+        display: flex;
+        justify-items: center;
+        align-items: center;
+      }
+      .modal-boxInvalidCardExp {
+        position: relative;
+        width: 90%;
+        max-width: 400px;
+        border-radius: 10px;
+        background-color: red;
+        font-size: larger;
+        color: white;
+        padding: 40px;
+        margin: -150px auto 150px auto;
+      }
+      #closebtnInvalidCardExp {
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        cursor: pointer;
+        font-size: 24px;
+        border: none;
+        background: none;
+      }
+      /* #openbtn {
+        font-size: 24px;
+        margin: 40px;
+        padding: 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      } */
+       .modal-overlayInvalidCardNumber {
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        display: none;
+      }
+      .show {
+        display: flex;
+        justify-items: center;
+        align-items: center;
+      }
+      .modal-boxInvalidCardNumber {
+        position: relative;
+        width: 90%;
+        max-width: 400px;
+        border-radius: 10px;
+        background-color: red;
+        font-size: larger;
+        color: white;
+        padding: 40px;
+        margin: -150px auto 150px auto;
+      }
+      #closebtnInvalidCardNumber {
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        cursor: pointer;
+        font-size: 24px;
+        border: none;
+        background: none;
+      }
+      /* #openbtn {
+        font-size: 24px;
+        margin: 40px;
+        padding: 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      } */
+       .modal-overlayInvalidCardCVC {
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        display: none;
+      }
+      .show {
+        display: flex;
+        justify-items: center;
+        align-items: center;
+      }
+      .modal-boxInvalidCardCVC {
+        position: relative;
+        width: 90%;
+        max-width: 400px;
+        border-radius: 10px;
+        background-color: red;
+        font-size: larger;
+        color: white;
+        padding: 40px;
+        margin: -150px auto 150px auto;
+      }
+      #closebtnInvalidCardCVC {
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        cursor: pointer;
+        font-size: 24px;
+        border: none;
+        background: none;
+      }
+      /* #openbtn {
+        font-size: 24px;
+        margin: 40px;
+        padding: 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      } */
+       .modal-overlayShop {
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        display: none;
+      }
+      .show {
+        display: flex;
+        justify-items: center;
+        align-items: center;
+      }
+      .modal-boxShop {
+        position: relative;
+        width: 90%;
+        max-width: 400px;
+        border-radius: 10px;
+        background-color: red;
+        font-size: larger;
+        color: white;
+        padding: 40px;
+        margin: -150px auto 150px auto;
+      }
+      #closebtnShop {
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        cursor: pointer;
+        font-size: 24px;
+        border: none;
+        background: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      <img
+        src="Imgs/1770734094459.png"
+        alt="BareNorth Logo"
+        class="w-24 ml-4"
+      />
+    </h1>
+    <section class="flex items-center flex-col">
+      <p class="text-4xl font-semibold mb-4">Checkout</p>
+      
+    </section>
+    <section class="my-16 mx-96 flex justify-center">
+      <div
+        class="flex justify-between w-96 bg-gray-200 p-4 border rounded-lg border-gray-300"
+      >
+        <p>Email</p>
+        <div class="flex">
+          <p id="currentMail" class="text-gray-600"></p>
+          <div class="w-12"></div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <p class="flex justify-center text-2xl font-semibold">Order Details</p>
+      <div class="flex flex-col items-center my-4">
+      
+      <div class="rounded-t-lg bg-gray-700 text-sm text-white w-96 pl-4">
+        <div class="flex justify-between p-4"><p>ID</p><p>Product</p><p>Quantity</p></div>
+      </div>
+      <div id="orderItems" class="rounded-b-lg bg-gray-700 text-sm text-gray-300 w-96 px-4">
+        <!-- <div class="flex justify-between p-4"><p>1</p><p>Falana Dhimkana</p><p>3</p></div> -->
+      </div>
+    </div>
+    <div class="flex justify-center my-4">
+      <div
+        class="flex justify-between w-96 bg-gray-200 px-8 py-4 border rounded-lg border-gray-300"
+      >
+        <p>Total Amount</p>
+        <div class="flex pl-4">
+          <p id="totalAmount" class="text-gray-600"></p>
+        </div>
+      </div></div></p>
+      <p id="orderTotal"></p></div>
+    </section>
+    <section>
+      <p class="flex justify-center text-2xl font-semibold">
+        Payment Proceeding
+      </p>
+      <div class="flex justify-center mt-8 mb-4">
+        <p class="text-lg bg-gray-100 p-3 rounded">Card</p>
+      </div>
+
+      <!-- form  -->
+      <div id="cartForm" class="flex justify-center">
+        <form id="signupForm" name="regForm">
+          <div class="mt-6">
+            <label>Card details</label><br />
+            <input
+              type="text"
+              id="cardNumber"
+              placeholder="Card Number"
+              class="border border-gray-400 mt-2 p-2.5 w-96 rounded-tr-lg rounded-tl-lg border-b-0"
+              name="card"
+              inputmode="numeric"
+              maxlength="14"
+              required
+            />
+          </div>
+
+          <div class="mb-2 flex">
+            <input
+              type="date"
+              id="expCard"
+              class="border border-gray-400 p-2.5 w-48 rounded-bl-lg border-r-0"
+              name="email"
+              min="2026-02-14"
+              required
+            />
+            <input
+              type="text"
+              id="CVC"
+              class="border border-gray-400 p-2.5 w-48 rounded-br-lg"
+              name="CVC"
+              placeholder="CVC"
+              inputmode="numeric"
+              maxlength="3"
+              required
+            />
+          </div>
+
+          <div class="flex justify-center mt-8 mb-4">
+            <p class="text-lg bg-gray-100 p-3 rounded">Shipping</p>
+          </div>
+          <div class="mt-6">
+            <label>Shipping Address</label><br />
+            <input
+              type="text"
+              id="adddressShip"
+              placeholder="Address"
+              maxlength="100"
+              class="border border-gray-400 mt-2 p-2.5 w-96 rounded-tr-lg rounded-tl-lg border-b-0"
+              required
+            />
+          </div>
+
+          <div class="mb-2 flex">
+            <input
+              type="text"
+              id="contact"
+              placeholder="Contact"
+              class="border border-gray-400 p-2.5 w-48 rounded-bl-lg border-r-0"
+              name="contact"
+              maxlength="11"
+              required
+            />
+            <select
+              id="country"
+              class="border border-gray-400 p-2.5 w-48 rounded-br-lg cursor-pointer"
+              placeholder="Country"
+              required
+            >
+              <option value="nill">-- Select Country --</option>
+              <option class="bg-gray-200" value="Pakistan">Pakistan</option>
+              <option class="bg-gray-200" value="Pakistan">USA</option>
+            </select>
+          </div>
+
+          <div class="flex justify-center gap-4">
+            <button
+              type="button"
+              id="cancelBuy"
+              class="my-6 py-2 cursor-pointer border-2 w-24 flex justify-center bg-gray-800 hover:bg-black text-white rounded-lg"
+              onclick="cancel()"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              id="submit"
+              class="my-6 py-2 cursor-pointer border-2 w-24 flex justify-center bg-gray-800 hover:bg-black text-white rounded-lg"
+              onclick="buy()"
+            >
+              Buy
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+
+    <!-- Modals  -->
+ 
+
+    <div class="Success">
+      <div id="modalSuccess" class="modal-overlay">
+        <div class="modal-box">
+          <button id="closebtnSuccess">x</button>
+         <h3>Congratulations!</h3>
+         <p>Transaction Successful</p>
+        </div>
+      </div>
+    </div>
+    <div class="Fail">
+      <div id="modalFail" class="modal-overlayFail">
+        <div class="modal-boxFail">
+          <button id="closebtnFail">x</button>
+         <h3 class="text-sm">Oops!</h3>
+         <p class="text-xs font-semibold">Transaction Fail</p>
+         <p>Not Enough Money</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="InvalidCardNumber">
+      <div id="modalInvalidCardNumber" class="modal-overlayInvalidCardNumber">
+        <div class="modal-boxInvalidCardNumber">
+          <button id="closebtnInvalidCardNumber">x</button>
+         <h3>Invalid Card Credential</h3>
+         <p class="text-sm font-semibold">Card Number is wrong</p>
+        </div>
+      </div>
+    </div>
+    <div class="InvalidCardExp">
+      <div id="modalInvalidCardExp" class="modal-overlayInvalidCardExp">
+        <div class="modal-boxInvalidCardExp">
+          <button id="closebtnInvalidCardExp">x</button>
+         <h3>Invalid Card Credential</h3>
+         <p class="text-sm font-semibold">Card expiry date is wrong</p>
+        </div>
+      </div>
+    </div>
+    <div class="InvalidCardCVC">
+      <div id="modalInvalidCardCVC" class="modal-overlayInvalidCardCVC">
+        <div class="modal-boxInvalidCardCVC">
+          <button id="closebtnInvalidCardCVC">x</button>
+         <h3>Invalid Card Credential</h3>
+         <p class="text-sm font-semibold">Card CVC is wrong</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="Shop">
+      <div id="modalShop" class="modal-overlayShop">
+        <div class="modal-boxShop">
+          <button id="closebtnShop">x</button>
+         <h3>Can't Find You!</h3>
+         <p class="text-sm font-semibold">Enter Shipping Details Correctly</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- script  -->
+
+    <script>
+      let productsJSON = [];
+      let currentEmail = localStorage.getItem("currentEmail");
+      if (!currentEmail) {
+        window.location.href = "Login.html";
+      }
+      document.getElementById("currentMail").innerText = currentEmail;
+      let userCartInfo = JSON.parse(localStorage.getItem(currentEmail + "_carts"));
+      let items = userCartInfo.items;
+      let total = userCartInfo.total;
+      document.getElementById("totalAmount").innerText = `$${total}`;
+      fetch("products.json")
+        .then(res => res.json())
+        .then(data => {
+          productsJSON =data;
+
+          for (let i = 0; i < items.length; i++) {
+            let itemDetails = items[i];
+            let product_id = itemDetails.pro_id;
+            let product_quantity = itemDetails.quantity;
+            
+            let productInfo = null;
+            for (let j = 0; j < productsJSON.length; j++) {
+              if (productsJSON[j].idProduct == Number(product_id)) {
+                productInfo = productsJSON[j];
+                break;
+              }
+            }
+  
+  
+            let productName;
+            if (productInfo != null) {
+              productName = productInfo.nameProduct;
+            } else {
+              productName = "Unknown Product";
+            }
+
+
+            document.getElementById("orderItems").innerHTML += `<div class="flex justify-between p-4"><p>${product_id}</p><p>${productName}</p><p>${product_quantity}</p></div>`;
+
+            
+          }
+
+        })
+
+
+        let card = JSON.parse(localStorage.getItem("Card") || "{}");
+        
+        let cardInput = document.getElementById("cardNumber");
+        cardInput.addEventListener("input", function(){
+          this.value = this.value.replace(/\D/g, "");
+        })
+        let CVC = document.getElementById("CVC");
+        CVC.addEventListener("input", function(){
+          this.value = this.value.replace(/\D/g, "");
+        })
+        let expdate = document.getElementById("expCard");
+
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, "0");
+        const dd = String(today.getDate()).padStart(2, "0");
+        const formattedToday = `${yyyy}-${mm}-${dd}`;
+
+        expdate.setAttribute("min", formattedToday);
+
+        let contactNumberInput = document.getElementById("contact");
+        contactNumberInput.addEventListener("input", function(){
+          this.value = this.value.replace(/\D/g, "");
+        });
+
+
+        function buy(){
+          
+
+          let myMoney = JSON.parse(localStorage.getItem(currentEmail + "_money"));
+          console.log(myMoney);
+
+          let inputEXP = new Date(expdate.value);
+          let parts = card.expDate.split("/");
+          let month = parts[0].padStart(2, "0");
+          let day = parts[1].padStart(2, "0");
+          let year = parts[2];
+
+          let formattedStored = `${year}-${month}-${day}`;
+          let storedEXP = new Date(formattedStored);
+
+
+          let today = new Date();
+          today.setHours(0,0,0,0);
+
+          let expired = inputEXP < today;
+
+          // ========= can write in 1 if condition using && =============
+
+          if (parseInt(cardInput.value) !== card.cardNumber) {
+            // alert("Invalid Card");
+            openMInvalidCardNumber();
+            setInterval(() => {
+              cancel();
+            }, 2000);
+            return;
+          
+          }
+          if (inputEXP.getTime() !== storedEXP.getTime()) {
+            // alert("Invalid Card");
+            openMInvalidCardExp();
+            setInterval(() => {
+              cancel();
+            }, 2000);
+            return;
+          
+          }
+          if (parseInt(CVC.value) !== card.CVC || expired) {
+            // alert("Invalid Card");
+            openMInvalidCardCVC();
+            setInterval(() => {
+              cancel();
+            }, 2000);
+            return;
+          
+          }
+          let AddressShip = document.getElementById("adddressShip").value.trim();
+          let countryShip = document.getElementById("country").value;
+          let contactNumber = document.getElementById("contact").value.trim();
+
+          if (AddressShip == "" || countryShip == "nill" || contactNumber == "") {
+            // alert("Enter shipping details properly")
+            openMShop();
+            return
+          }
+
+          if (myMoney < total) {
+              // alert("Transaction Failed: Not enough money");
+              openMFail();
+              setTimeout(() => {
+                cancel();
+              }, 2000);
+            } else {
+              // alert("Transaction Successful!");
+
+              openM();
+
+              myMoney -= total;
+
+              let confirmBuy = JSON.parse(localStorage.getItem(currentEmail + "_confirm")) || [];
+              let currentCart = JSON.parse(localStorage.getItem(currentEmail + "_carts"));
+              currentCart.status = "1";
+              if (currentCart) {
+                confirmBuy.push(currentCart);
+              }
+              localStorage.setItem(currentEmail + "_confirm", JSON.stringify(confirmBuy));
+
+
+              localStorage.setItem(currentEmail + "_money", JSON.stringify(myMoney));
+              localStorage.removeItem(currentEmail + "_carts");
+              document.getElementById("orderItems").innerHTML = "";
+              document.getElementById("totalAmount").innerText = "$0";
+              setTimeout(() => {
+                window.location.href = "home.html"
+              }, 2000);
+            }
+        }
+
+      function cancel() {
+        let latestCart = JSON.parse(localStorage.getItem(currentEmail + "_carts"));
+        if (!latestCart) {
+          alert("No cart found");
+          return;
+        }
+        latestCart.status = "0";
+
+        let cancelledCarts = JSON.parse(localStorage.getItem(currentEmail + "_confirm")) || [];
+
+
+        cancelledCarts.push(latestCart);
+
+        localStorage.setItem(
+          currentEmail + "_confirm",
+          JSON.stringify(cancelledCarts)
+        );
+
+        localStorage.removeItem(currentEmail + "_carts");
+
+        window.location.href = "home.html";
+        console.log("cancel clicked");
+      }
+
+
+
+      // modals 
+
+
+      const modalSuccess = document.getElementById("modalSuccess");
+      const openbtnSuccess = document.getElementById("openbtnSuccess");
+      const closebtnSuccess = document.getElementById("closebtnSuccess");
+
+      function openM() {
+        modalSuccess.classList.add("show");
+      }
+      function closeM() {
+        modalSuccess.classList.remove("show");
+      }
+      // openbtn.addEventListener("click", openM);
+      closebtnSuccess.addEventListener("click", closeM);
+
+      modalSuccess.addEventListener("click", function (e) {
+        if (e.target === modalSuccess) {
+          closeM();
+        }
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeM();
+        }
+      });
+
+
+
+
+      const modalFail = document.getElementById("modalFail");
+      const openbtnFail = document.getElementById("openbtnFail");
+      const closebtnFail = document.getElementById("closebtnFail");
+
+      function openMFail() {
+        modalFail.classList.add("show");
+      }
+      function closeMFail() {
+        modalFail.classList.remove("show");
+      }
+      // openbtn.addEventListener("click", openM);
+      closebtnFail.addEventListener("click", closeMFail);
+
+      modalFail.addEventListener("click", function (e) {
+        if (e.target === modalFail) {
+          closeMFail();
+        }
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeMFail();
+        }
+      });
+
+
+
+
+      const modalInvalidCardNumber = document.getElementById("modalInvalidCardNumber");
+      const openbtnInvalidCardNumber = document.getElementById("openbtnInvalidCardNumber");
+      const closebtnInvalidCardNumber = document.getElementById("closebtnInvalidCardNumber");
+
+      function openMInvalidCardNumber() {
+        modalInvalidCardNumber.classList.add("show");
+      }
+      function closeMInvalidCardNumber() {
+        modalInvalidCardNumber.classList.remove("show");
+      }
+      // openbtn.addEventListener("click", openM);
+      closebtnInvalidCardNumber.addEventListener("click", closeMInvalidCardNumber);
+
+      modalInvalidCardNumber.addEventListener("click", function (e) {
+        if (e.target === modalInvalidCardNumber) {
+          closeMInvalidCardNumber();
+        }
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeMInvalidCardNumber();
+        }
+      });
+
+
+
+
+      const modalInvalidCardExp = document.getElementById("modalInvalidCardExp");
+      const openbtnInvalidCardExp = document.getElementById("openbtnInvalidCardExp");
+      const closebtnInvalidCardExp = document.getElementById("closebtnInvalidCardExp");
+
+      function openMInvalidCardExp() {
+        modalInvalidCardExp.classList.add("show");
+      }
+      function closeMInvalidCardExp() {
+        modalInvalidCardExp.classList.remove("show");
+      }
+      // openbtn.addEventListener("click", openM);
+      closebtnInvalidCardExp.addEventListener("click", closeMInvalidCardExp);
+
+      modalInvalidCardExp.addEventListener("click", function (e) {
+        if (e.target === modalInvalidCardExp) {
+          closeMInvalidCardExp();
+        }
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeMInvalidCardExp();
+        }
+      });
+
+
+
+
+      const modalInvalidCardCVC = document.getElementById("modalInvalidCardCVC");
+      const openbtnInvalidCardCVC = document.getElementById("openbtnInvalidCardCVC");
+      const closebtnInvalidCardCVC = document.getElementById("closebtnInvalidCardCVC");
+
+      function openMInvalidCardCVC() {
+        modalInvalidCardCVC.classList.add("show");
+      }
+      function closeMInvalidCardCVC() {
+        modalInvalidCardCVC.classList.remove("show");
+      }
+      // openbtn.addEventListener("click", openM);
+      closebtnInvalidCardCVC.addEventListener("click", closeMInvalidCardCVC);
+
+      modalInvalidCardCVC.addEventListener("click", function (e) {
+        if (e.target === modalInvalidCardCVC) {
+          closeMInvalidCardCVC();
+        }
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeMInvalidCardCVC();
+        }
+      });
+
+
+
+
+      const modalShop = document.getElementById("modalShop");
+      const openbtnShop = document.getElementById("openbtnShop");
+      const closebtnShop = document.getElementById("closebtnShop");
+
+      function openMShop() {
+        modalShop.classList.add("show");
+      }
+      function closeMShop() {
+        modalShop.classList.remove("show");
+      }
+      // openbtn.addEventListener("click", openM);
+      closebtnShop.addEventListener("click", closeMShop);
+
+      modalShop.addEventListener("click", function (e) {
+        if (e.target === modalShop) {
+          closeMShop();
+        }
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeMShop();
+        }
+      });
+
+
+    </script>
+  </body>
+</html>
